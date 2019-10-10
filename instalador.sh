@@ -86,6 +86,7 @@ while true; do
 		--menu "Selecione uma opção:" $HEIGHT $WIDTH 4 \
 		"1" "instalar programas" \
 		"2" "informações do sistema" \
+		"3" "espaço do disco" \
 		2>&1 1>&3)
 	exit_status=$?
 	exec 3>&-
@@ -114,8 +115,11 @@ while true; do
 		   ;;
  
    		3 )
-		   display result "porra nenhuma"
+	           result=$(df -h)
+		   display_result "Espaço do disco"
+		   clear
 		   ;;
+
 	esac
     done		
  }
