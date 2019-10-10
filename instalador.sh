@@ -25,7 +25,8 @@ while true; do
 		--menu "Selecione uma opção:" $HEIGHT $WIDTH 4 \
 		"1" "instalar squid3" \
 		"2" "instalar iptables" \
-		"3" "instalar tudo" \
+		"3" "instalar o vim" \
+		"4" "instalar tudo" \
 		2>&1 1>&3)
 	exit_status=$?
 	exec 3>&-
@@ -43,8 +44,6 @@ while true; do
 	esac
 	case $selection in
 		0 )
-		   clear
-		   echo "programa encerrado"
 		   ;;
 		1 )
 		   if ! apt-get install squid3
@@ -62,16 +61,23 @@ while true; do
 			clear
 		   fi	
 		   ;;
-		3 ) 
-		  if ! apt-get install squid3 iptables apache2 sarg
-		  display_result "squid3, iptables, apache2 e sarg foram instalado"
+
+		 3) if !apt-get install vim
+			display_result "vim instalado"
+			clear
+	 	    then
+			    clear
+	            fi
+	        	;;
+		    
+		4) 
+		  if ! apt-get install squid3 iptables apache2 sarg vim
+		  display_result "squid3, iptables, apache2 , sarg e vim foram instalado"
 	 	 then
 			clear
 		  fi	
 	  	   ;;	  
-   		4 )
-		   display result "porra nenhuma"
-		   ;;
+   		
 	esac
     done			
  }
@@ -123,6 +129,7 @@ while true; do
 	esac
     done		
  }
- #fim das funções
+ #fim das funçõe
+#apt-get install dialog
 menu_principal
 
