@@ -15,6 +15,7 @@ WIDTH=0
  }
 
 carregar_menu(){
+result=$("");
 while true; do
 	exec 3>&1
 	selection=$(dialog \
@@ -114,9 +115,12 @@ while true; do
 		   echo "programa encerrado"
 		   ;;
 		1 )
+		   result=$("")
 		   carregar_menu
+		   exit
 		   ;;
-		2 ) 
+		2 )
+		  result=$("")
 		  display_result "Não funciona ainda"
 		   ;;
  
